@@ -8,17 +8,34 @@
 
 import UIKit
 
-class FactsViewController: UIViewController {
+class FactsViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tableView: UITableView = UITableView()
+        tableView.frame = self.view.frame
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        self.view.addSubview(tableView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        return cell
     }
     
 
