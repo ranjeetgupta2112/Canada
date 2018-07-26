@@ -15,6 +15,9 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var service : FactsService = FactsService()
+        service.fetchJsonObject()
+        
         let tableView: UITableView = UITableView()
         tableView.frame = self.view.frame
         tableView.dataSource = self
@@ -34,7 +37,16 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+//        var cell : FactsCell? = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FactsCell
+//
+//        if (cell == nil) {
+//            cell = FactsCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+//        }
+//
+//        cell?.labelTitle.text = "TEXT"
+//        cell?.labelDescription.text = "DETAIL TEXT"
+        var cell: UITableViewCell = UITableViewCell()
+        
         return cell
     }
     
