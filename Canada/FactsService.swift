@@ -10,14 +10,13 @@ import UIKit
 
 protocol FetchJsonObjectDelegate: AnyObject {
     func UpdateFactsDataInUI(factsData : FactsModel)
-    func serviceFailedWithError(error : NSError)
+    func serviceFailedWithError(error : Error)
 }
 
 class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
     
     weak var delegate:FetchJsonObjectDelegate?
     
-    //var factsJsonData:
     func fetchJsonObject(){
         let facctsJsonString: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
         let factsUrl = URL(string: facctsJsonString)
@@ -30,7 +29,9 @@ class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
         {
             (data, response, error) in
             // check for any errors
-            //print("data fetched :", data)
+            if (data == nil) {
+              self.delegate?.serviceFailedWithError(error: error!)
+            } else{
             let stringData = NSString.init(data: data!, encoding: String.Encoding.ascii.rawValue)
             let encodedData = stringData?.data(using: String.Encoding.utf8.rawValue)!
             do{
@@ -39,24 +40,16 @@ class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
                 self.delegate?.UpdateFactsDataInUI(factsData: factsModelData)
             }
             catch{
-
+                print("Error encoding the data for facts")
             }
-
             guard error == nil else {
-                print("Error fetcjing data :",error!)
+                self.delegate?.serviceFailedWithError(error: error!)
                 return
             }
+            return
+        }
         }
         task.resume()
     }
-    
-      func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data){
-        // make sure we got data
-
-    }
-    
-
-
-    
-    
+   
 }

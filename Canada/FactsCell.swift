@@ -17,7 +17,6 @@ class FactsCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-
         // creating the title label programatically and adding to conatiner view
         labelTitle.font = UIFont(name: "Arial-BoldMT", size: 15)
         labelTitle.tag = 1
@@ -43,7 +42,6 @@ class FactsCell: UITableViewCell {
         self.contentView.addSubview(labelDescription)
         
         // creating the UIImage programatically and adding to conatiner view
-        //imageFact.image = UIImage(named: "default.png")!
         imageFact.translatesAutoresizingMaskIntoConstraints = false
         imageFact.backgroundColor = UIColor.darkGray;
         self.contentView.addSubview(imageFact)
@@ -52,16 +50,12 @@ class FactsCell: UITableViewCell {
         let left : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelTitle, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 5)
         let top : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelTitle, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 5)
         let right : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelTitle, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 5)
-        //NSLayoutConstraint.activate([left, right, top])
         self.contentView.addConstraints([top, left,right])
-        
         
         let topDescription : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelDescription, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.labelTitle, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 5)
         let leftDescription : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelDescription, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 10)
         let rightDescription : NSLayoutConstraint = NSLayoutConstraint.init(item: self.labelDescription, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: -10)
-        //NSLayoutConstraint.activate([topDescription, leftDescription,rightDescription])
         self.contentView.addConstraints([topDescription, leftDescription,rightDescription])
-        
         
         let topImage : NSLayoutConstraint = NSLayoutConstraint.init(item: self.imageFact, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.labelDescription, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 5)
         let leftImage : NSLayoutConstraint = NSLayoutConstraint.init(item: self.imageFact, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.contentView, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 10)
@@ -71,7 +65,6 @@ class FactsCell: UITableViewCell {
         NSLayoutConstraint.activate([topImage, leftImage, heightImage,widthImage,bottomImage])
         self.contentView.addConstraints([topImage, leftImage, heightImage,widthImage,bottomImage])
 
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,13 +74,10 @@ class FactsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
