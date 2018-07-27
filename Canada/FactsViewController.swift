@@ -64,11 +64,6 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
             cell = FactsCell(style: UITableViewCellStyle.value1, reuseIdentifier: identifier)
         }
         cell?.tag = indexPath.row
-//        cell?.labelTitle.text = "It works here"
-//        cell?.labelDescription.text = "Description works here"
-
-        
-
         if(canadafactsList != nil){
             cell?.labelTitle.text = self.canadafactsList.rows![indexPath.row].title
             print("Title : ",self.canadafactsList.rows![indexPath.row].title)
@@ -76,7 +71,31 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
             cell?.imageFact.image = nil;
 
             DispatchQueue.global(qos: .userInteractive).async{
-
+                let urlString : String? = self.canadafactsList.rows![indexPath.row].imageHref
+                guard  urlString == nil else{
+                    let url : URL? = URL(string: urlString!)
+                    do{
+                        let imageData : Data = try Data(contentsOf: url!)
+                        guard UIImage(data: imageData) == nil else{
+                            let image : UIImage? = UIImage(data: imageData)!
+                            if(image != nil){
+                                DispatchQueue.main.async {
+                                    if (cell?.tag == indexPath.row) {
+                                        cell?.imageFact.image = image
+                                        cell?.setNeedsLayout()
+                                    }
+                                    
+                                }
+                            }
+                            return
+                        }
+                            return
+                    }
+                    catch{
+                        
+                    }
+                    return
+                }
             }
         }
         
