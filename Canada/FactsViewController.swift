@@ -8,22 +8,26 @@
 
 import UIKit
 
-class FactsViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class FactsViewController: UIViewController, UITableViewDelegate,UITableViewDataSource ,FetchJsonObjectDelegate{
 
+
+    
+    var canadafactsList : FactsModel!
+    let tableView: UITableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var service : FactsService = FactsService()
-        service.fetchJsonObject()
-        
-        let tableView: UITableView = UITableView()
         tableView.frame = self.view.frame
         tableView.dataSource = self
         tableView.delegate = self
-        
         self.view.addSubview(tableView)
+        
+        var service : FactsService = FactsService()
+        service.delegate = self
+        service.fetchJsonObject()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,34 +35,94 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func UpdateFactsDataInUI(factsData: FactsModel) {
+        canadafactsList = factsData
+        print("Printing from view controller ",canadafactsList.rows?.count)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
+    
+    func serviceFailedWithError(error: NSError) {
+        print(error)
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell : FactsCell? = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FactsCell
-//
-//        if (cell == nil) {
-//            cell = FactsCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
-//        }
-//
-//        cell?.labelTitle.text = "TEXT"
-//        cell?.labelDescription.text = "DETAIL TEXT"
-        var cell: UITableViewCell = UITableViewCell()
+        let identifier : String = "FactsCell"
+        var cell : FactsCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? FactsCell
+
+        if (cell == nil) {
+            cell = FactsCell(style: UITableViewCellStyle.value1, reuseIdentifier: identifier)
+        }
+        cell?.tag = indexPath.row
+//        cell?.labelTitle.text = "It works here"
+//        cell?.labelDescription.text = "Description works here"
+
         
-        return cell
+
+        if(canadafactsList != nil){
+            cell?.labelTitle.text = self.canadafactsList.rows![indexPath.row].title
+            print("Title : ",self.canadafactsList.rows![indexPath.row].title)
+            cell?.labelDescription.text = self.canadafactsList.rows![indexPath.row].description
+            cell?.imageFact.image = nil;
+
+            DispatchQueue.global(qos: .userInteractive).async{
+
+            }
+        }
+        
+        
+//        if(canadafactsList != nil){
+//        cell?.labelTitle.text = self.canadafactsList.rows![indexPath.row].title
+//        cell?.labelDescription.text = self.canadafactsList.rows![indexPath.row].description
+//        cell?.imageFact.image = nil;
+//        //cell?.imageFact.image = UIImage(named: "default.png")!
+//
+//        DispatchQueue.global(qos: .userInteractive).async{
+//            let urlString : String? = self.canadafactsList.rows![indexPath.row].imageHref
+//            if let url : URL? = URL(string: urlString!){
+//            if(url != nil){
+//            do{
+//                let imageData : Data = try Data(contentsOf: url!)
+//                let image : UIImage = UIImage(data: imageData)!
+//                if(image != nil){
+//                    DispatchQueue.main.async {
+//                        if (cell?.tag == indexPath.row) {
+//                            cell?.imageFact.image = image
+//                            cell?.setNeedsLayout()
+//                        }
+//
+//                    }
+//                }
+//            }
+//            catch{
+//                print("Cannot download image")
+//                }
+//
+//            }
+//
+//
+//            cell?.setNeedsLayout()
+//            if (indexPath.row % 2 == 0){
+//                cell?.backgroundColor = UIColor.gray
+//            }
+//            else{
+//                cell?.backgroundColor = UIColor.white
+//            }
+//
+        
+        return cell!
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

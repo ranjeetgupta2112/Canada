@@ -8,44 +8,52 @@
 
 import UIKit
 
+protocol FetchJsonObjectDelegate: AnyObject {
+    func UpdateFactsDataInUI(factsData : FactsModel)
+    func serviceFailedWithError(error : NSError)
+}
+
 class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
     
-
+    weak var delegate:FetchJsonObjectDelegate?
+    
     //var factsJsonData:
     func fetchJsonObject(){
         let facctsJsonString: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
         let factsUrl = URL(string: facctsJsonString)
         let urlRequest = URLRequest(url: factsUrl!)
-        
         // set up the session
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        
         // make the request
-        let task = session.dataTask(with: urlRequest) {
+        let task = session.dataTask(with: urlRequest)
+        {
             (data, response, error) in
             // check for any errors
-            print("data fetched :", data)
+            //print("data fetched :", data)
             let stringData = NSString.init(data: data!, encoding: String.Encoding.ascii.rawValue)
-            print("data prining : ", stringData)
+            let encodedData = stringData?.data(using: String.Encoding.utf8.rawValue)!
+            do{
+                let factsModelData : FactsModel = try FactsModel.init(data: encodedData!)
+                print("Facts Model  class data",factsModelData)
+                self.delegate?.UpdateFactsDataInUI(factsData: factsModelData)
+            }
+            catch{
 
-            let myNSData = stringData?.data(using: String.Encoding.utf8.rawValue)!
-            print("data prining again : ", myNSData)
+            }
 
             guard error == nil else {
                 print("Error fetcjing data :",error!)
                 return
             }
-
-        
         }
         task.resume()
     }
     
-//      func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data){
-//        // make sure we got data
+      func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data){
+        // make sure we got data
 
-//    }
+    }
     
 
 
