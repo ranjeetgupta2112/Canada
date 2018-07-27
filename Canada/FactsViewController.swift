@@ -24,9 +24,23 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         tableView.delegate = self
         self.view.addSubview(tableView)
         
-        var service : FactsService = FactsService()
+        let service : FactsService = FactsService()
         service.delegate = self
         service.fetchJsonObject()
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        
+        setConstraintsForTableView()
+    }
+    
+    func setConstraintsForTableView(){
+
+        let width = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation(rawValue: 0)!, toItem: self.view, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0)
+        let height = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation(rawValue: 0)!, toItem: self.view, attribute: NSLayoutAttribute.height, multiplier: 1.0, constant: 0)
+        let top = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1.0 , constant: 0)
+        let leading = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+        self.view.addConstraints([width, height, top, leading])
 
     }
 
@@ -37,7 +51,6 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     
     func UpdateFactsDataInUI(factsData: FactsModel) {
         canadafactsList = factsData
-        print("Printing from view controller ",canadafactsList.rows?.count)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -99,45 +112,6 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
             }
         }
         
-        
-//        if(canadafactsList != nil){
-//        cell?.labelTitle.text = self.canadafactsList.rows![indexPath.row].title
-//        cell?.labelDescription.text = self.canadafactsList.rows![indexPath.row].description
-//        cell?.imageFact.image = nil;
-//        //cell?.imageFact.image = UIImage(named: "default.png")!
-//
-//        DispatchQueue.global(qos: .userInteractive).async{
-//            let urlString : String? = self.canadafactsList.rows![indexPath.row].imageHref
-//            if let url : URL? = URL(string: urlString!){
-//            if(url != nil){
-//            do{
-//                let imageData : Data = try Data(contentsOf: url!)
-//                let image : UIImage = UIImage(data: imageData)!
-//                if(image != nil){
-//                    DispatchQueue.main.async {
-//                        if (cell?.tag == indexPath.row) {
-//                            cell?.imageFact.image = image
-//                            cell?.setNeedsLayout()
-//                        }
-//
-//                    }
-//                }
-//            }
-//            catch{
-//                print("Cannot download image")
-//                }
-//
-//            }
-//
-//
-//            cell?.setNeedsLayout()
-//            if (indexPath.row % 2 == 0){
-//                cell?.backgroundColor = UIColor.gray
-//            }
-//            else{
-//                cell?.backgroundColor = UIColor.white
-//            }
-//
         
         return cell!
     }
