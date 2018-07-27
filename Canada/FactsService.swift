@@ -40,7 +40,7 @@ class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
                 self.delegate?.UpdateFactsDataInUI(factsData: factsModelData)
             }
             catch{
-                print("Error encoding the data for facts")
+                self.delegate?.serviceFailedWithError(error: error)
             }
             guard error == nil else {
                 self.delegate?.serviceFailedWithError(error: error!)
