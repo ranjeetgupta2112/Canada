@@ -18,7 +18,6 @@ protocol FetchJsonObjectDelegate: AnyObject {
 public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
     
     weak var delegate:FetchJsonObjectDelegate?
-    var factsData : Data?
     
     func fetchJsonObject(){
         
@@ -44,11 +43,10 @@ public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
                     self.delegate?.serviceFailedWithError(error: error!)
                 } else{
                     let stringData = NSString.init(data: data!, encoding: String.Encoding.ascii.rawValue)
-                    //let encodedData = stringData?.data(using: String.Encoding.utf8.rawValue)!
-                    self.factsData = (stringData?.data(using: String.Encoding.utf8.rawValue)!)!
+                    let encodedData = stringData?.data(using: String.Encoding.utf8.rawValue)!
 
                     do{
-                        let factsModelData : FactsModel = try FactsModel.init(data: self.factsData!)
+                        let factsModelData : FactsModel = try FactsModel.init(data: encodedData!)
                         print("Facts Model  class data",factsModelData)
                         self.delegate?.UpdateFactsDataInUI(factsData: (factsModelData))
                     }
