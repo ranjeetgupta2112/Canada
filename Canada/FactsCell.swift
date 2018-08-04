@@ -18,9 +18,9 @@ class FactsCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // creating the title label programatically and adding to conatiner view
-        labelTitle.font = UIFont(name: "Arial-BoldMT", size: 15)
+        labelTitle.font = UIFont(name: "Arial-BoldMT", size: 17)
         labelTitle.tag = 1
-        labelTitle.textColor = UIColor.black
+        labelTitle.textColor = UIColor.white
         labelTitle.numberOfLines = 0
         labelTitle.translatesAutoresizingMaskIntoConstraints = false;
         labelTitle.preferredMaxLayoutWidth = self.frame.size.width;// assumes the parent view has its frame already set.
@@ -30,7 +30,7 @@ class FactsCell: UITableViewCell {
         self.contentView.addSubview(labelTitle)
         
         // creating the title label programatically and adding to conatiner view
-        labelDescription.font = UIFont(name: "Arial-BoldMT", size: 15)
+        labelDescription.font = UIFont(name: "Arial", size: 15)
         labelDescription.tag = 1
         labelDescription.textColor = UIColor.black
         labelDescription.numberOfLines = 0

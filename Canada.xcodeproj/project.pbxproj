@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3182A462115C2650015BE75 /* CanadaServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3182A452115C2650015BE75 /* CanadaServiceTest.swift */; };
 		F342B5562109EDDE001D832A /* FactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342B5552109EDDE001D832A /* FactsModel.swift */; };
 		F343000921089FB400E67B29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343000821089FB400E67B29 /* AppDelegate.swift */; };
 		F343001021089FB600E67B29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F343000F21089FB600E67B29 /* Assets.xcassets */; };
@@ -16,7 +17,20 @@
 		F3B412AF2108F52F00CE675E /* FactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B412AE2108F52F00CE675E /* FactsService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F3182A482115C2660015BE75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F343FFFD21089FB400E67B29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F343000421089FB400E67B29;
+			remoteInfo = Canada;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F3182A432115C2650015BE75 /* CanadaServiceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanadaServiceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3182A452115C2650015BE75 /* CanadaServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaServiceTest.swift; sourceTree = "<group>"; };
+		F3182A472115C2660015BE75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F342B5552109EDDE001D832A /* FactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModel.swift; sourceTree = "<group>"; };
 		F343000521089FB400E67B29 /* Canada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F343000821089FB400E67B29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +43,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F3182A402115C2650015BE75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F343000221089FB400E67B29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +60,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3182A442115C2650015BE75 /* CanadaServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				F3182A452115C2650015BE75 /* CanadaServiceTest.swift */,
+				F3182A472115C2660015BE75 /* Info.plist */,
+			);
+			path = CanadaServiceTest;
+			sourceTree = "<group>";
+		};
 		F343000621089FB400E67B29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				F343000521089FB400E67B29 /* Canada.app */,
+				F3182A432115C2650015BE75 /* CanadaServiceTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F343000721089FB400E67B29 /* Canada */,
+				F3182A442115C2650015BE75 /* CanadaServiceTest */,
 				F343000621089FB400E67B29 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +105,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F3182A422115C2650015BE75 /* CanadaServiceTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3182A4A2115C2660015BE75 /* Build configuration list for PBXNativeTarget "CanadaServiceTest" */;
+			buildPhases = (
+				F3182A3F2115C2650015BE75 /* Sources */,
+				F3182A402115C2650015BE75 /* Frameworks */,
+				F3182A412115C2650015BE75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3182A492115C2660015BE75 /* PBXTargetDependency */,
+			);
+			name = CanadaServiceTest;
+			productName = CanadaServiceTest;
+			productReference = F3182A432115C2650015BE75 /* CanadaServiceTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F343000421089FB400E67B29 /* Canada */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F343001721089FB600E67B29 /* Build configuration list for PBXNativeTarget "Canada" */;
@@ -100,6 +150,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Sweet;
 				TargetAttributes = {
+					F3182A422115C2650015BE75 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = F343000421089FB400E67B29;
+					};
 					F343000421089FB400E67B29 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -119,11 +173,19 @@
 			projectRoot = "";
 			targets = (
 				F343000421089FB400E67B29 /* Canada */,
+				F3182A422115C2650015BE75 /* CanadaServiceTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F3182A412115C2650015BE75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F343000321089FB400E67B29 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,6 +198,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F3182A3F2115C2650015BE75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3182A462115C2650015BE75 /* CanadaServiceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F343000121089FB400E67B29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,6 +220,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F3182A492115C2660015BE75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F343000421089FB400E67B29 /* Canada */;
+			targetProxy = F3182A482115C2660015BE75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		F343001121089FB600E67B29 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -162,6 +240,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F3182A4B2115C2660015BE75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CanadaServiceTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranjeet.CanadaServiceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Canada.app/Canada";
+			};
+			name = Debug;
+		};
+		F3182A4C2115C2660015BE75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CanadaServiceTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranjeet.CanadaServiceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Canada.app/Canada";
+			};
+			name = Release;
+		};
 		F343001521089FB600E67B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -315,6 +431,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F3182A4A2115C2660015BE75 /* Build configuration list for PBXNativeTarget "CanadaServiceTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3182A4B2115C2660015BE75 /* Debug */,
+				F3182A4C2115C2660015BE75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F343000021089FB400E67B29 /* Build configuration list for PBXProject "Canada" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

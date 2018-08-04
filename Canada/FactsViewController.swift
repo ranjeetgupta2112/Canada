@@ -71,6 +71,13 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         }
     }
     
+    func networkfailureAlert(message: String) {
+        DispatchQueue.main.async {
+            let alert : UIAlertController = UIAlertController(title: "Error Fetching Facts Data", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            self.present(alert, animated: true, completion: nil)        }
+
+    }
+    
     func serviceFailedWithError(error: Error) {
         let alert : UIAlertController = UIAlertController(title: "Error Fetching Facts Data", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         self.present(alert, animated: true, completion: nil)
@@ -141,7 +148,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
             cell?.contentView.backgroundColor = UIColor.gray;
         }
         else{
-            cell?.contentView.backgroundColor = UIColor.white;
+            cell?.contentView.backgroundColor = UIColor.lightGray;
         }
         
         return cell!
