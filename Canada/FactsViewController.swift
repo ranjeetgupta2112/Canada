@@ -66,15 +66,15 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     
     func UpdateFactsDataInUI(factsData: FactsModel) {
         canadafactsList = factsData
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
     func networkfailureAlert(message: String) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             let alert : UIAlertController = UIAlertController(title: "Error Fetching Facts Data", message: message, preferredStyle: UIAlertControllerStyle.alert)
-            self.present(alert, animated: true, completion: nil)        }
+            self?.present(alert, animated: true, completion: nil)        }
 
     }
     
@@ -116,8 +116,8 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
             cell?.labelDescription.text = self.canadafactsList.rows![indexPath.row].description
             cell?.imageFact.image = nil;
 
-            DispatchQueue.global(qos: .userInteractive).async{
-                let urlString : String? = self.canadafactsList.rows![indexPath.row].imageHref
+            DispatchQueue.global(qos: .userInteractive).async{ [weak self] in
+                let urlString : String? = self?.canadafactsList.rows![indexPath.row].imageHref
                 guard  urlString == nil else{
                     let url : URL? = URL(string: urlString!)
                     do{
