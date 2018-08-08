@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import SystemConfiguration
+
 @testable import Canada
 
 
@@ -16,22 +18,7 @@ class CanadaServiceTest: XCTestCase{
     var service : FactsService = FactsService()
 
 
-    func UpdateFactsDataInUI(factsData: FactsModel) {
-        canadaFactsList = factsData
-        
-        
-    }
-    
-    func serviceFailedWithError(error: Error) {
-    
-    }
-    
-    func networkfailureAlert(message: String) {
-        
-    }
-    
 
-    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -42,20 +29,41 @@ class CanadaServiceTest: XCTestCase{
         super.tearDown()
     }
     
-    func testUrl() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        service.fetchJsonObject()
+    func testNetworkRechability(){
+        guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com") else { return }
+        
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(reachability, &flags)
+        
+        if(flags.contains(.reachable)){
+            print("Internet connection i sactive")
+        }
+        else{
+            print("No internet connection")
+        }
     }
     
-    func testServiceMethodCall() {
+    func testUrl() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
         let facctsJsonString: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
         let factsUrl = URL(string: facctsJsonString)
-        let urlRequest = URLRequest(url: factsUrl!)
+        let urlRequest : URLRequest? = URLRequest(url: factsUrl!)
         XCTAssert(urlRequest != nil)
+    }
+    
+    func testJsonContent(){
+        var data : NSData? = NSData()
+        data =  NSData(contentsOf: URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!)
+        
+        XCTAssert(data != nil)
+    }
+    
+    func testServiceMethodCall() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        service.fetchJsonObject()
     }
     
     func testPerformanceExample() {

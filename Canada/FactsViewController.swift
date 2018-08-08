@@ -66,6 +66,15 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     
     func UpdateFactsDataInUI(factsData: FactsModel) {
         canadafactsList = factsData
+        var counter : Int = (canadafactsList.rows?.count)!
+        counter = counter-1
+
+        for  index in 1..<counter{
+            if (self.canadafactsList.rows![index].title == nil){
+                self.canadafactsList.rows?.remove(at: index)
+            }
+        }
+        
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -108,7 +117,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         var cell : FactsCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? FactsCell
 
         if (cell == nil) {
-            cell = FactsCell(style: UITableViewCellStyle.value1, reuseIdentifier: identifier)
+            cell = FactsCell(style: UITableViewCellStyle.value2, reuseIdentifier: identifier)
         }
         cell?.tag = indexPath.row
         if(canadafactsList != nil){

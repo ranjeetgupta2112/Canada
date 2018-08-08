@@ -17,10 +17,12 @@ class FactsCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+            self.contentView.layer.cornerRadius = contentView.bounds.size.width / 30
         // creating the title label programatically and adding to conatiner view
         labelTitle.font = UIFont(name: "Arial-BoldMT", size: 17)
         labelTitle.tag = 1
         labelTitle.textColor = UIColor.white
+        labelTitle.backgroundColor = UIColor.black
         labelTitle.numberOfLines = 0
         labelTitle.translatesAutoresizingMaskIntoConstraints = false;
         labelTitle.preferredMaxLayoutWidth = self.frame.size.width;// assumes the parent view has its frame already set.
@@ -32,7 +34,7 @@ class FactsCell: UITableViewCell {
         // creating the title label programatically and adding to conatiner view
         labelDescription.font = UIFont(name: "Arial", size: 15)
         labelDescription.tag = 1
-        labelDescription.textColor = UIColor.black
+        labelDescription.textColor = UIColor.darkText
         labelDescription.numberOfLines = 0
         labelDescription.translatesAutoresizingMaskIntoConstraints = false;
         labelDescription.preferredMaxLayoutWidth = self.frame.size.width;// assumes the parent view has its frame already set.

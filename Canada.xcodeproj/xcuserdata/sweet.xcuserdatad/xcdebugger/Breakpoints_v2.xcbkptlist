@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CanadaServiceTest/CanadaServiceTest.swift"
-            timestampString = "555088624.222173"
+            filePath = "Canada/FactsService.swift"
+            timestampString = "555449819.6124361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "UpdateFactsDataInUI(factsData:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "fetchJsonObject()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Canada/FactsService.swift"
-            timestampString = "555088624.222798"
+            filePath = "CanadaServiceTest/CanadaServiceTest.swift"
+            timestampString = "555449819.612522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "fetchJsonObject()"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "testJsonContent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CanadaServiceTest/CanadaServiceTest.swift"
+            timestampString = "555449819.612594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "testServiceMethodCall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -6,7 +6,7 @@ import Foundation
 
 class FactsModel: Codable {
     let title: String?
-    let rows: [Row]?
+    var rows: [Row]?
     
     init(title: String?, rows: [Row]?) {
         self.title = title
