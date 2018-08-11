@@ -71,12 +71,12 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
 
         repeat{
         for  index in 1..<factsCount{
-            if (self.canadafactsList.rows![index].title == nil){
+            if (self.canadafactsList.rows![index].title == nil && self.canadafactsList.rows![index].description == nil && self.canadafactsList.rows![index].imageHref == nil){
                 self.canadafactsList.rows?.remove(at: index)
                 //we should update the counter after every deletion since the iteration would go out of bound
                 break
             }
-        }
+        }   //maintaing the current fact count after a single deletion of nil fact
             factsCount = factsCount - 1
         }while ((self.canadafactsList.rows?.count)! < factsCount)
         
