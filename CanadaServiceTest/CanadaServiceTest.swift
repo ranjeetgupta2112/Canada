@@ -36,7 +36,7 @@ class CanadaServiceTest: XCTestCase{
         SCNetworkReachabilityGetFlags(reachability, &flags)
         
         if(flags.contains(.reachable)){
-            print("Internet connection i sactive")
+            print("Internet connection is active")
         }
         else{
             print("No internet connection")
@@ -56,7 +56,6 @@ class CanadaServiceTest: XCTestCase{
     func testJsonContent(){
         var data : NSData? = NSData()
         data =  NSData(contentsOf: URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!)
-        
         XCTAssert(data != nil)
     }
     

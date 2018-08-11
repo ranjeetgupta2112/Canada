@@ -65,15 +65,20 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     }
     
     func UpdateFactsDataInUI(factsData: FactsModel) {
-        canadafactsList = factsData
-        var counter : Int = (canadafactsList.rows?.count)!
-        counter = counter-1
+        //we should remove any cell which does not have any data
+        self.canadafactsList = factsData
+        var factsCount : Int = (factsData.rows?.count)!
 
-        for  index in 1..<counter{
+        repeat{
+        for  index in 1..<factsCount{
             if (self.canadafactsList.rows![index].title == nil){
                 self.canadafactsList.rows?.remove(at: index)
+                //we should update the counter after every deletion since the iteration would go out of bound
+                break
             }
         }
+            factsCount = factsCount - 1
+        }while ((self.canadafactsList.rows?.count)! < factsCount)
         
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
