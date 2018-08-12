@@ -159,7 +159,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         }
         cell?.layoutIfNeeded()
         if (indexPath.row % 2 == 0){
-            cell?.contentView.backgroundColor = UIColor.gray;
+            cell?.contentView.backgroundColor = UIColor.white;
         }
         else{
             cell?.contentView.backgroundColor = UIColor.lightGray;
