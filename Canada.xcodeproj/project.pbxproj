@@ -15,6 +15,8 @@
 		F343001B2108A13300E67B29 /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343001A2108A13300E67B29 /* FactsViewController.swift */; };
 		F343001D2108A91A00E67B29 /* FactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343001C2108A91A00E67B29 /* FactsCell.swift */; };
 		F3B412AF2108F52F00CE675E /* FactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B412AE2108F52F00CE675E /* FactsService.swift */; };
+		F3DC752E21208E6000468C05 /* CanadaFactsCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC752D21208E6000468C05 /* CanadaFactsCellTest.swift */; };
+		F3DC753021208F2700468C05 /* CanadaPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC752F21208F2700468C05 /* CanadaPerformance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		F343001A2108A13300E67B29 /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
 		F343001C2108A91A00E67B29 /* FactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCell.swift; sourceTree = "<group>"; };
 		F3B412AE2108F52F00CE675E /* FactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsService.swift; sourceTree = "<group>"; };
+		F3DC752D21208E6000468C05 /* CanadaFactsCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaFactsCellTest.swift; sourceTree = "<group>"; };
+		F3DC752F21208F2700468C05 /* CanadaPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaPerformance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 		F3182A442115C2650015BE75 /* CanadaServiceTest */ = {
 			isa = PBXGroup;
 			children = (
+				F3DC752F21208F2700468C05 /* CanadaPerformance.swift */,
+				F3DC752D21208E6000468C05 /* CanadaFactsCellTest.swift */,
 				F3182A452115C2650015BE75 /* CanadaServiceTest.swift */,
 				F3182A472115C2660015BE75 /* Info.plist */,
 			);
@@ -203,6 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3182A462115C2650015BE75 /* CanadaServiceTest.swift in Sources */,
+				F3DC752E21208E6000468C05 /* CanadaFactsCellTest.swift in Sources */,
+				F3DC753021208F2700468C05 /* CanadaPerformance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

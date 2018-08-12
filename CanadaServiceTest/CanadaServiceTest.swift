@@ -63,14 +63,10 @@ class CanadaServiceTest: XCTestCase{
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         service.fetchJsonObject()
+        XCTAssert(service.factsModelDataTest != nil)
+
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            let service : FactsService = FactsService()
-            service.fetchJsonObject()
-        }
-    }
+
     
 }
