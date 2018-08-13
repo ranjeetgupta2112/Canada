@@ -17,7 +17,7 @@ class FactsCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-            self.contentView.layer.cornerRadius = contentView.bounds.size.width / 30
+        //self.contentView.layer.cornerRadius = contentView.bounds.size.width / 30
         // creating the title label programatically and adding to conatiner view
         labelTitle.font = UIFont(name: "Arial-BoldMT", size: 17)
         labelTitle.tag = 1
