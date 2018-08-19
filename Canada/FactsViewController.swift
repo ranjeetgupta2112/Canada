@@ -9,12 +9,12 @@
 import UIKit
 
 class FactsViewController: UIViewController, UITableViewDelegate,UITableViewDataSource ,FetchJsonObjectDelegate{
-
     var canadafactsList : FactsModel!
     let tableView: UITableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //Adding delegate and datsource to presennt data on table view
         tableView.frame = self.view.frame
         tableView.dataSource = self
@@ -35,6 +35,11 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         //addidng table view constraints to main view
         setConstraintsForTableView()
+    }
+    
+    //we hide the sttus bar as is overlaps with the table view because of tranparancy
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     func fetchJsonData(){
@@ -90,6 +95,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard self.canadafactsList == nil else{
             let title =  self.canadafactsList.title
+            
             return title
         }
         return nil
@@ -118,7 +124,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         if(canadafactsList != nil){
             cell?.labelTitle.text = self.canadafactsList.rows![indexPath.row].title
             cell?.labelDescription.text = self.canadafactsList.rows![indexPath.row].description
-            cell?.imageFact.image = nil;
+            cell?.imageFact.image = UIImage(named: "noImage");
 
             DispatchQueue.global(qos: .userInteractive).async{ [weak self] in
                 let urlString : String? = self?.canadafactsList.rows![indexPath.row].imageHref
@@ -149,7 +155,7 @@ class FactsViewController: UIViewController, UITableViewDelegate,UITableViewData
         }
         cell?.layoutIfNeeded()
         if (indexPath.row % 2 == 0){
-            cell?.contentView.backgroundColor = UIColor.white;
+            cell?.contentView.backgroundColor = UIColor.clear;
         }
         else{
             cell?.contentView.backgroundColor = UIColor.lightGray;

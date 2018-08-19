@@ -15,19 +15,18 @@ protocol FetchJsonObjectDelegate: AnyObject {
     func networkfailureAlert(message : String)
 }
 
-public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
+public class FactsService: NSObject{
     
     weak var delegate:FetchJsonObjectDelegate?
+    var responceData : URLResponse?
+    
     
     func fetchJsonObject(){
-        
         guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com") else { return }
-        
         var flags = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(reachability, &flags)
         
         if(flags.contains(.reachable)){
-            
             let facctsJsonString: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
             let factsUrl = URL(string: facctsJsonString)
             let urlRequest = URLRequest(url: factsUrl!)
@@ -36,7 +35,7 @@ public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
             let session = URLSession(configuration: config)
             // make the request
             let task = session.dataTask(with: urlRequest)
-            {   
+            {
                 (data, response, error) in
                 // check for any errors
                 if (data == nil) {
@@ -47,7 +46,6 @@ public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
 
                     do{
                         let factsModelData : FactsModel = try FactsModel.init(data: encodedData!)
-                        print("Facts Model  class data",factsModelData)
                         self.delegate?.UpdateFactsDataInUI(factsData: (factsModelData))
                     }
                     catch{
@@ -66,5 +64,5 @@ public class FactsService: NSObject, URLSessionDelegate,URLSessionTaskDelegate{
         }
 
     }
-   
+
 }

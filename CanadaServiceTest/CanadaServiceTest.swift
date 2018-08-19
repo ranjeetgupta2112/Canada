@@ -16,12 +16,15 @@ class CanadaServiceTest: XCTestCase{
     
     var canadaFactsList : FactsModel?
     var service : FactsService = FactsService()
+    var sessionUnderTest : URLSession?
 
 
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        sessionUnderTest = URLSession(configuration: URLSessionConfiguration.default)
+
     }
     
     override func tearDown() {
@@ -39,7 +42,7 @@ class CanadaServiceTest: XCTestCase{
             print("Internet connection is active")
         }
         else{
-            print("No internet connection")
+            print("No Internet connection")
         }
     }
     
@@ -60,13 +63,30 @@ class CanadaServiceTest: XCTestCase{
     }
     
     func testServiceMethodCall() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         service.fetchJsonObject()
-        XCTAssert(service.factsModelDataTest != nil)
-
     }
     
+    func testService() {
+        
+        let facctsJsonString: String = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+        let factsUrl = URL(string: facctsJsonString)
+        let urlRequest = URLRequest(url: factsUrl!)
+        
+        let promise = expectation(description: "data != nil")
+        
+        let task = sessionUnderTest?.dataTask(with: urlRequest)
+        {
+            (data, response, error) in
+            
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+                return
+            }
+            promise.fulfill()
+        }
+        task?.resume()
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 
     
 }
